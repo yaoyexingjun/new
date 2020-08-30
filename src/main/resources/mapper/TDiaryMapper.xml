@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.resources.wu.mapper.TDiaryMapper">
+  <resultMap id="BaseResultMap" type="com.resources.wu.entity.TDiary">
+    <!--@mbg.generated-->
+    <!--@Table wu.t_diary-->
+    <id column="d_id" jdbcType="INTEGER" property="dId" />
+    <result column="d_date" jdbcType="DATE" property="dDate" />
+    <result column="d_info" jdbcType="VARCHAR" property="dInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    d_id, d_date, d_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from wu.t_diary
+    where d_id = #{dId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from wu.t_diary
+    where d_id = #{dId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="d_id" keyProperty="dId" parameterType="com.resources.wu.entity.TDiary" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wu.t_diary (d_date, d_info)
+    values (#{dDate,jdbcType=DATE}, #{dInfo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.resources.wu.entity.TDiary">
+    <!--@mbg.generated-->
+    update wu.t_diary
+    set d_date = #{dDate,jdbcType=DATE},
+      d_info = #{dInfo,jdbcType=VARCHAR}
+    where d_id = #{dId,jdbcType=INTEGER}
+  </update>
+</mapper>
