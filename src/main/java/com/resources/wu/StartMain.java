@@ -15,7 +15,7 @@ public class StartMain {
     Environment environment;
     public static void main(String[] args) {
 
-        // new StartCommand(args);
+        // new StartCommand(args);你好
         SpringApplication.run(StartMain.class,args);
         System.out.println("启动成功");
 
