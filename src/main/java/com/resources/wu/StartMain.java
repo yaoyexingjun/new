@@ -1,33 +1,58 @@
 package com.resources.wu;
 
+import com.resources.wu.entity.UserDto;
+import com.resources.wu.entity.UserVo;
+import com.resources.wu.service.EntityConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 //@MapperScan(basePackages = "mapper")
+
 @SpringBootApplication
 public class StartMain {
 
     @Autowired
     Environment environment;
+
     public static void main(String[] args) {
 
         // new StartCommand(args);
-        SpringApplication.run(StartMain.class,args);
+        SpringApplication.run(StartMain.class, args);
         System.out.println("启动成功");
+        UserVo userVo = new UserVo();
+        userVo.setId(1);
+        userVo.setusername("a");
+        userVo.setAge("12");
+        userVo.setSex("1");
 
-
-        while (true) {
-            Scanner input = new Scanner(System.in);
-            String ss = input.nextLine();
-            System.out.println(ss);
+        UserVo userVo1 = new UserVo();
+        userVo1.setId(2);
+        userVo1.setusername("c");
+        userVo1.setAge("12");
+        userVo1.setSex("1");
+        //UserDto userDto = new UserDto();
+        //BeanUtils.copyProperties(userVo,userDto);
+        //UserDto userDto =  EntityConverter.entityConverter.votoDto(userVo);
+       // System.out.println(userDto.getName());
+        List<UserVo> listVo = new ArrayList<>();
+        listVo.add(userVo);
+        listVo.add(userVo1);
+        List<UserDto> listDto = EntityConverter.entityConverter.votoListDto(listVo);
+        for (UserDto t:listDto) {
+            System.out.println(t.getName());
         }
+//        while (true) {
+//            Scanner input = new Scanner(System.in);
+//            String ss = input.nextLine();
+//            System.out.println(ss);
+//        }
         //input.close();
-
-
 
 
 //        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -73,8 +98,6 @@ public class StartMain {
 //        // 对List进行二分查找，返回索引，List必须是有序的
 //        Collections.sort(arrayList);
 //        System.out.println(Collections.binarySearch(arrayList, 7));
-
-
 
 
 //在java代码中获取JVM参数
@@ -182,5 +205,5 @@ public class StartMain {
 //                StartMain.class.getClassLoader().getParent());
 //        System.out.println("The GrandParent of StartMain's ClassLoader is " +
 //                        StartMain.class.getClassLoader().getParent().getParent());
-   }
+    }
 }

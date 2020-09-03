@@ -49,7 +49,6 @@ public class UserController  {
     @RequestMapping("/insert")
     String insert(@RequestParam Integer id, String name, String age) {
         System.out.println(id);
-
         User u = new User();
         u.setName(name);
         u.setAge(age);
