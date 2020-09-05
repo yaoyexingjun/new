@@ -22,31 +22,32 @@ public class StartMain {
 
     public static void main(String[] args) {
 
+
         // new StartCommand(args);
         SpringApplication.run(StartMain.class, args);
         System.out.println("启动成功");
-        UserVo userVo = new UserVo();
-        userVo.setId(1);
-        userVo.setusername("a");
-        userVo.setAge("12");
-        userVo.setSex("1");
-
-        UserVo userVo1 = new UserVo();
-        userVo1.setId(2);
-        userVo1.setusername("c");
-        userVo1.setAge("12");
-        userVo1.setSex("1");
+//        UserVo userVo = new UserVo();
+//        userVo.setId(1);
+//        userVo.setusername("a");
+//        userVo.setAge("12");
+//        userVo.setSex("1");
+//
+//        UserVo userVo1 = new UserVo();
+//        userVo1.setId(2);
+//        userVo1.setusername("c");
+//        userVo1.setAge("12");
+//        userVo1.setSex("1");
         //UserDto userDto = new UserDto();
         //BeanUtils.copyProperties(userVo,userDto);
         //UserDto userDto =  EntityConverter.entityConverter.votoDto(userVo);
        // System.out.println(userDto.getName());
-        List<UserVo> listVo = new ArrayList<>();
-        listVo.add(userVo);
-        listVo.add(userVo1);
-        List<UserDto> listDto = EntityConverter.entityConverter.votoListDto(listVo);
-        for (UserDto t:listDto) {
-            System.out.println(t.getName());
-        }
+//        List<UserVo> listVo = new ArrayList<>();
+//        listVo.add(userVo);
+//        listVo.add(userVo1);
+//        List<UserDto> listDto = EntityConverter.entityConverter.votoListDto(listVo);
+//        for (UserDto t:listDto) {
+//            System.out.println(t.getName());
+//        }
 //        while (true) {
 //            Scanner input = new Scanner(System.in);
 //            String ss = input.nextLine();
