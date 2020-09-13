@@ -1,16 +1,10 @@
 package com.resources.wu;
 
-import com.resources.wu.entity.UserDto;
-import com.resources.wu.entity.UserVo;
-import com.resources.wu.service.EntityConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 //@MapperScan(basePackages = "mapper")
 
@@ -26,12 +20,14 @@ public class StartMain {
         // new StartCommand(args);
         SpringApplication.run(StartMain.class, args);
         System.out.println("启动成功");
+
+
+
 //        UserVo userVo = new UserVo();
 //        userVo.setId(1);
 //        userVo.setusername("a");
 //        userVo.setAge("12");
 //        userVo.setSex("1");
-//
 //        UserVo userVo1 = new UserVo();
 //        userVo1.setId(2);
 //        userVo1.setusername("c");
