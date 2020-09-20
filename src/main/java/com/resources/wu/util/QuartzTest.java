@@ -1,8 +1,5 @@
 package com.resources.wu.util;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.Trigger;
+import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import static org.quartz.JobBuilder.*;
 import static org.quartz.TriggerBuilder.*;
@@ -20,14 +17,8 @@ public class QuartzTest {
             // Grab the Scheduler instance from the Factory
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
-            // and start it off
             scheduler.start();
 //=================================
-//            // define the job and tie it to our HelloJob class
-//            JobDetail job = newJob(HelloJob.class)
-//                    .withIdentity("myJob", "group1") // name "myJob", group "group1"
-//                    .build();
-            // define the job and tie it to our DumbJob class
             JobDetail job = newJob(DumbJob.class)
                     .withIdentity("myJob", "group1")
                     .usingJobData("jobSays", "Hello World!")
@@ -39,9 +30,13 @@ public class QuartzTest {
                     .withIdentity("myTrigger", "group1")
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInSeconds(40)
+                            .withIntervalInSeconds(10)
                             .repeatForever())
                     .build();
+//            //指定时间开始出发，不重复
+//            SimpleTrigger simpleTrigger = newTrigger()
+//            .withIdentity("trigger1","group1")
+//            .startAt(myStartTime).forJob("job1","group1"):
 
 // Tell quartz to schedule the job using our trigger
             scheduler.scheduleJob(job, trigger);

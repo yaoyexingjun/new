@@ -2,7 +2,9 @@ package com.resources.wu.util;
 
 import org.quartz.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -54,7 +56,10 @@ public class DumbJob implements Job {
 //        float myFloatValue = dataMap.getFloat("myFloatValue");
 //        ArrayList state = (ArrayList) dataMap.get("myStateDate");
 //        state.add(new Date());
-
+    java.util.Calendar cal   =   java.util.Calendar.getInstance();
+        cal.add(Calendar.DATE,   -1);
+        String yesterday = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+        System.out.println(yesterday);
         System.err.println("Instance " + key + " of DumbJob says: " + jobSays + ", and val is: " + myFloatValue);
     }
 
