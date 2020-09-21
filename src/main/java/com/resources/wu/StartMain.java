@@ -1,5 +1,7 @@
 package com.resources.wu;
 
+import com.resources.wu.entity.UserDto;
+import com.resources.wu.service.EntityConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

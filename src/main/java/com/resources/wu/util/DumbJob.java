@@ -13,6 +13,8 @@ import java.util.Date;
  * @author
  * @date 2020/9/10
  */
+@DisallowConcurrentExecution
+@PersistJobDataAfterExecution
 public class DumbJob implements Job {
     String jobSays;
     float myFloatValue;

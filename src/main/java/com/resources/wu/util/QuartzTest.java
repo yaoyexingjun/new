@@ -1,4 +1,5 @@
 package com.resources.wu.util;
+import org.apache.poi.ss.formula.functions.T;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import static org.quartz.JobBuilder.*;
@@ -19,7 +20,15 @@ public class QuartzTest {
 
             scheduler.start();
 //=================================
-            JobDetail job = newJob(DumbJob.class)
+//            JobDetail job = newJob(DumbJob.class)
+            //JobDetail job = newJob(Class.forName("com.resources.wu.util.DumbJob"))
+            Class c = null;
+            try {
+                 c =  Class.forName("com.resources.wu.util.DumbJob");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            JobDetail job = JobBuilder.newJob(c)
                     .withIdentity("myJob", "group1")
                     .usingJobData("jobSays", "Hello World!")
                     .usingJobData("myFloatValue", 3.141f)
