@@ -2,6 +2,8 @@ package com.resources.wu.util;
 import org.apache.poi.ss.formula.functions.T;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+
+import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.*;
 import static org.quartz.TriggerBuilder.*;
 import static org.quartz.SimpleScheduleBuilder.*;
@@ -35,13 +37,22 @@ public class QuartzTest {
                     .build();
 
 // Trigger the job to run now, and then every 40 seconds
-            Trigger trigger = newTrigger()
-                    .withIdentity("myTrigger", "group1")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInSeconds(10)
-                            .repeatForever())
+
+            Trigger    trigger = newTrigger()
+                    .withIdentity("trigger3", "group1")
+                    .withSchedule(cronSchedule("0 * * * * ?"))
+                    .forJob("myJob", "group1")
                     .build();
+
+
+
+//            Trigger trigger = newTrigger()
+//                    .withIdentity("myTrigger", "group1")
+//                    .startNow()
+//                    .withSchedule(simpleSchedule()
+//                            .withIntervalInSeconds(10)
+//                            .repeatForever())
+//                    .build();
 //            //指定时间开始出发，不重复
 //            SimpleTrigger simpleTrigger = newTrigger()
 //            .withIdentity("trigger1","group1")
@@ -49,6 +60,7 @@ public class QuartzTest {
 
 // Tell quartz to schedule the job using our trigger
             scheduler.scheduleJob(job, trigger);
+
             //========================
 //            scheduler.shutdown();
 
