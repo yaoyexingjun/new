@@ -31,7 +31,7 @@ public class QuartzTest {
                 e.printStackTrace();
             }
             JobDetail job = JobBuilder.newJob(c)
-                    .withIdentity("myJob", "group1")
+                    .withIdentity("Job4", "group4")
                     .usingJobData("jobSays", "Hello World!")
                     .usingJobData("myFloatValue", 3.141f)
                     .build();
@@ -39,12 +39,11 @@ public class QuartzTest {
 // Trigger the job to run now, and then every 40 seconds
 
             Trigger    trigger = newTrigger()
-                    .withIdentity("trigger3", "group1")
-                    .withSchedule(cronSchedule("0 * * * * ?"))
-                    .forJob("myJob", "group1")
+                    .withIdentity("Job4", "group4")
+                    .withSchedule(cronSchedule("0/2 * * * * ?"))
                     .build();
 
-
+// .forJob("myJob", "group1")
 
 //            Trigger trigger = newTrigger()
 //                    .withIdentity("myTrigger", "group1")
