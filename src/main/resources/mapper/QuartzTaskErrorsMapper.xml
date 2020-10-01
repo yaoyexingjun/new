@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.resources.wu.mapper.QuartzTaskErrorsMapper">
+  <resultMap id="BaseResultMap" type="com.resources.wu.entity.QuartzTaskErrors">
+    <!--@mbg.generated-->
+    <!--@Table quartz_task_errors-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="taskExecuteRecordId" jdbcType="VARCHAR" property="taskexecuterecordid" />
+    <result column="errorKey" jdbcType="VARCHAR" property="errorkey" />
+    <result column="errorValue" jdbcType="LONGVARCHAR" property="errorvalue" />
+    <result column="createTime" jdbcType="BIGINT" property="createtime" />
+    <result column="lastModifyTime" jdbcType="BIGINT" property="lastmodifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, taskExecuteRecordId, errorKey, errorValue, createTime, lastModifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from quartz_task_errors
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from quartz_task_errors
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.resources.wu.entity.QuartzTaskErrors" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into quartz_task_errors (taskExecuteRecordId, errorKey, errorValue, 
+      createTime, lastModifyTime)
+    values (#{taskexecuterecordid,jdbcType=VARCHAR}, #{errorkey,jdbcType=VARCHAR}, #{errorvalue,jdbcType=LONGVARCHAR}, 
+      #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.resources.wu.entity.QuartzTaskErrors" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into quartz_task_errors
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskexecuterecordid != null and taskexecuterecordid != ''">
+        taskExecuteRecordId,
+      </if>
+      <if test="errorkey != null and errorkey != ''">
+        errorKey,
+      </if>
+      <if test="errorvalue != null and errorvalue != ''">
+        errorValue,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="lastmodifytime != null">
+        lastModifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskexecuterecordid != null and taskexecuterecordid != ''">
+        #{taskexecuterecordid,jdbcType=VARCHAR},
+      </if>
+      <if test="errorkey != null and errorkey != ''">
+        #{errorkey,jdbcType=VARCHAR},
+      </if>
+      <if test="errorvalue != null and errorvalue != ''">
+        #{errorvalue,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.resources.wu.entity.QuartzTaskErrors">
+    <!--@mbg.generated-->
+    update quartz_task_errors
+    <set>
+      <if test="taskexecuterecordid != null and taskexecuterecordid != ''">
+        taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
+      </if>
+      <if test="errorkey != null and errorkey != ''">
+        errorKey = #{errorkey,jdbcType=VARCHAR},
+      </if>
+      <if test="errorvalue != null and errorvalue != ''">
+        errorValue = #{errorvalue,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="lastmodifytime != null">
+        lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.resources.wu.entity.QuartzTaskErrors">
+    <!--@mbg.generated-->
+    update quartz_task_errors
+    set taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
+      errorKey = #{errorkey,jdbcType=VARCHAR},
+      errorValue = #{errorvalue,jdbcType=LONGVARCHAR},
+      createTime = #{createtime,jdbcType=BIGINT},
+      lastModifyTime = #{lastmodifytime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
